@@ -1,5 +1,6 @@
 "use client";
 import { SignOutButton, SignedIn, UserButton } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import { Logout } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,7 +48,7 @@ const LeftSidebar = () => {
                 <hr /> 
 
                 <div className="flex gap-4 items-center">
-                    <UserButton />
+                    <UserButton appearance={{ baseTheme: dark }}/>
                     <p className="text-light-1 text-body-bold">Manage Account</p>
                 </div>
 
