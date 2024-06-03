@@ -21,9 +21,9 @@ export async function POST(req) {
 
 	// If there are no headers, error out
 	if (!svix_id || !svix_timestamp || !svix_signature) {
-	return new Response("Error occured -- no svix headers", {
-		status: 400,
-	});
+		return new Response("Error occured -- no svix headers", {
+			status: 400,
+		});
 	}
 
 	// Get the body
@@ -37,16 +37,17 @@ export async function POST(req) {
 
 	// Verify the payload with the headers
 	try {
-	evt = wh.verify(body, {
-		"svix-id": svix_id,
-		"svix-timestamp": svix_timestamp,
-		"svix-signature": svix_signature,
-	});
-	} catch (err) {
-	console.error("Error verifying webhook:", err);
-	return new Response("Error occured", {
-		status: 400,
-	});
+		evt = wh.verify(body, {
+			"svix-id": svix_id,
+			"svix-timestamp": svix_timestamp,
+			"svix-signature": svix_signature,
+		});
+	}
+	catch (err) {
+		console.error("Error verifying webhook:", err);
+		return new Response("Error occured", {
+			status: 400,
+		});
 	}
 
 	// Handle the event
